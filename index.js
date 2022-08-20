@@ -23,6 +23,7 @@ const Animal = mongooose.model('Animal', {
 app.get('/find-all',
   async (req, res) => {
     const animals = await Animal.find()
+    console.log('Listing data')
     res.send(animals)
   }
 )
