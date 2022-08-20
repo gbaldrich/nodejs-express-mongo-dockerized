@@ -4,7 +4,7 @@
 ```bash
 npm install express mongoose
 ```
-- [ ] Modify the package.json file to include a script for running the app using the command `nodemon run start` in order to auto-reload the app when changes are made 
+- [ ] Modify the package.json file to include a script for running the app using the command `nodemon index.js` in order to auto-reload the app when changes are made 
   
   **Note:** nodemon most be installed in the Dockerfile
 
