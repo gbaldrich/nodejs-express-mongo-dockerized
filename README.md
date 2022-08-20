@@ -165,30 +165,30 @@ npm install express mongoose
     
     ```yml
 	version: '3.9'
+	
+    services:
+    node:
+    	build: 
+    	context: .
+    	dockerfile: Dockerfile.dev
+    	ports:
+    	- "3000:3000"
+    	links:
+    	- mongo-container
+    	volumes:
+    	- ./index.js:/app/index.js
+    mongo-container: # This name most be igual to MONGO_HOST at index.js
+    	image: mongo:4.2.22-rc0-bionic
+    	#ports: # By commenting this, only NodeJs can access to MongoDb database
+    	#  - "27017:27017"
+    	environment:
+    	- MONGO_INITDB_ROOT_USERNAME=user
+    	- MONGO_INITDB_ROOT_PASSWORD=password
+    	volumes:
+    	- mongo-data:/data/db
 
-	services:
-	node:
-		build: 
-		context: .
-		dockerfile: Dockerfile.dev
-		ports:
-		- "3000:3000"
-		links:
-		- mongo-container
-		volumes:
-		- ./index.js:/app/index.js
-	mongo-container: # This name most be igual to MONGO_HOST at index.js
-		image: mongo:4.2.22-rc0-bionic
-		#ports: # By commenting this, only NodeJs can access to MongoDb database
-		#  - "27017:27017"
-		environment:
-		- MONGO_INITDB_ROOT_USERNAME=user
-		- MONGO_INITDB_ROOT_PASSWORD=password
-		volumes:
-		- mongo-data:/data/db
-
-	volumes:
-	mongo-data:
+    volumes:
+    mongo-data:
     ```
 	
 	
